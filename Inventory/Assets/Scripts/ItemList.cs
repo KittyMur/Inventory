@@ -16,7 +16,7 @@ public class ItemList : MonoBehaviour
     }
     void Start()
     {
-        ListItem = Resources.FindObjectsOfTypeAll<ItemInList>();
+        ListItem = Resources.LoadAll<ItemInList>("prefabs");
         Count = 15;
         while (maxCount < Count)
         {

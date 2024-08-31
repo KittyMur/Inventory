@@ -5,22 +5,13 @@ using Unity.VisualScripting;
 using UnityEditorInternal.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class InventoryGrid : MonoBehaviour
 {
     private GridLayoutGroup inventoryGrid;
-    public GameObject inventoryItem;
-    public int Count = 10;
-    int index;
+    public GameObject[] inventoryItems;
     // Start is called before the first frame update
-    private void OnEnable()
-    {
-        DragAndDrop.returnItem += RemoveItem;
-    }
-    private void OnDisable()
-    {
-        DragAndDrop.returnItem += RemoveItem;
-    }
     void Start()
     {
         inventoryGrid = GetComponent<GridLayoutGroup>();
@@ -28,14 +19,10 @@ public class InventoryGrid : MonoBehaviour
     }
     public void AddItem()
     {
-        for (int i = 0; i < Count; i++)
+        for (int i = 0; i < inventoryItems.Length; i++)
         {
-            GameObject item = Instantiate(inventoryItem, inventoryGrid.transform);
-            index = i;
+            GameObject item = Instantiate(inventoryItems[i], inventoryGrid.transform);
+            item.GetComponent<InventoryItem>().id = i;
         }
-    }
-    public void RemoveItem()
-    {
-
     }
 }

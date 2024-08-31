@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Sword
   itemCondition: 0
-  itemImage: {fileID: 21300000, guid: 26aebb79336df044abf0eb5e519ca0ed, type: 3}
+  itemImage: {fileID: 21300000, guid: 21ae0f3ce98c59b43936f7af3d09e4b5, type: 3}
   itemSize: {x: 5, y: 2}

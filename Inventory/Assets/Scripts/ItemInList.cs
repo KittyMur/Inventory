@@ -12,7 +12,7 @@ public class ItemInList : Item
     public Image slotImage;
     RaycastHit2D hit;
 
-    public Transform parent;
+    public VerticalLayoutGroup parent;
     GameObject inventoryItem;
     public static event Action detectDelegate;
     // Start is called before the first frame update
@@ -31,7 +31,7 @@ public class ItemInList : Item
     // Start is called before the first frame update
     void Start()
     {
-        parent = transform.parent;
+        parent = FindObjectOfType<VerticalLayoutGroup>();
         slotName.text = data.ItemName;
         slotImage.sprite = data.ItemImage;
     }
@@ -51,7 +51,6 @@ public class ItemInList : Item
             {
                 transform.SetParent(inventoryItemTransform);
                 transform.position = inventoryItemTransform.transform.position;
-                Debug.Log(inventoryItem.name);
                 GetComponent<DragAndDrop>().change = false;
                 detectDelegate?.Invoke();
             }
@@ -70,7 +69,7 @@ public class ItemInList : Item
         {
             if (hit.transform == transform)
             {
-                transform.SetParent(parent);
+                transform.SetParent(parent.transform);
             }
         }
     }
